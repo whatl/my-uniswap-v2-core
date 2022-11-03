@@ -15,7 +15,14 @@ contract UniswapV2Factory is IUniswapV2Factory {
     bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(UniswapV2Pair).creationCode));
     //事件:配对被创建
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
-
+    
+    // 路由是交易所平台创建的
+    // IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0xD99D1c33F9fC3444f8101754aBC46c52416550D1);
+    // 工厂也是交易所平台创建的
+    // 配对合约你是通过传入自己token交易所会给你生成一份合约地址
+    // uniswapPair = IUniswapV2Factory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
+    //
+    //
     /**
      * @dev 构造函数
      * @param _feeToSetter 收税开关权限控制
